@@ -38,8 +38,8 @@ The easiest way to integrate this fix is by loading the scripts via jsDelivr:
 Prefer to host the scripts yourself? Follow these steps:
 
 1. **Download the files**:
-   - [`fs-cc.js`](https://github.com/StephanRyatt/fs-cc-gtm-integration/blob/main/fs-cc.js)
-   - [`index-fixed.js`](https://github.com/StephanRyatt/fs-cc-gtm-integration/blob/main/index-fixed.js)
+   - [`fs-cc.js`](https://github.com/StephanRyatt/fs-cc-gtm-integration/blob/main/src/fs-cc.js)
+   - [`index-fixed.js`](https://github.com/StephanRyatt/fs-cc-gtm-integration/blob/main/src/index-fixed.js)
 2. **Upload them to your own server**.
 3. **Update your script references** in Webflow or your website.
 
