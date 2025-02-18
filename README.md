@@ -1,4 +1,4 @@
-# FS-CC GTM Integration
+# Finsweet Cookie Consent GTM Integration
 
 ## 📝 Description
 This repository provides a **fixed and enhanced integration between Finsweet's Cookie Consent script (`fs-cc.js`) and Google Tag Manager (GTM)**. It ensures that consent settings from Finsweet’s system are correctly mapped and pushed to GTM for compliance with **Google Consent Mode, GDPR, and CCPA.**
