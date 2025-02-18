@@ -1,60 +1,57 @@
-# FS Cookie Consent Fix
+# FS-CC GTM Integration
 
 ## 📝 Description
-This repository contains a **modified version of Digital Sparks' Cookie Consent Boost script (`index.js`)** with a corrected mapping for ad personalization. The fix ensures that **`ad_personalization` is only enabled when "Marketing" consent is granted**, aligning with **Google Consent Mode best practices**.
+This repository provides a **fixed and enhanced integration between Finsweet's Cookie Consent script (`fs-cc.js`) and Google Tag Manager (GTM)**. It ensures that consent settings from Finsweet’s system are correctly mapped and pushed to GTM for compliance with **Google Consent Mode, GDPR, and CCPA.**
 
-This script works jointly with **Finsweet's Cookie Consent script (`fs-cc.js`)**, which provides the core cookie consent functionality. Digital Sparks' `index.js` acts as an enhancement layer, integrating **Google Consent Mode and pushing consent changes to Google Tag Manager (GTM)**. Because `index.js` interacts with Finsweet's system, incorrect consent mapping in `index.js` can override the main settings, making this fix necessary.
+### Why This Fix?
+By default, Digital Sparks' Cookie Consent Boost script (`index.js`) incorrectly linked `ad_personalization` to "Personalization" instead of "Marketing." Since this script **pushes consent updates to GTM**, incorrect mapping leads to **inaccurate tracking behavior** in Google Ads and Analytics.
 
-Users should also use the **self-hosted version of Finsweet's `fs-cc.js` from this repository**, ensuring full control over both scripts.
-
-## 🚀 Why This Fix?
-By default, Digital Sparks' script (`index.js`) incorrectly links `ad_personalization` to "Personalization" instead of "Marketing." Since `index.js` pushes consent updates to GTM, this incorrect mapping leads to **inaccurate consent enforcement** in Google Ads and other tracking tools. This fix ensures:
-- ✅ **Proper Google Ads & GDPR compliance**.
-- ✅ **Accurate tracking behavior** by only enabling ad-related cookies when marketing consent is given.
-- ✅ **Prevention of unintended tracking issues.**
+This fix ensures:
+- ✅ **Correct GTM Consent Mode behavior** – Ad personalization is only enabled with "Marketing" consent.
+- ✅ **Full integration with Finsweet's `fs-cc.js`** – Works seamlessly with Webflow setups.
+- ✅ **Accurate compliance enforcement** – Avoids unintentional ad tracking violations.
 
 ## 📦 How to Use
 
-Pick one of the following methods to include the scripts in your website:
-
 ### **✅ Option 1: Use jsDelivr CDN (Recommended)**
-This is the easiest way to load the scripts. Just add the following lines to your Webflow project or website:
+The easiest way to integrate this fix is by loading the scripts via jsDelivr:
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/StephanRyatt/fs-cookie-consent-fix/fs-cc-fixed.js" fs-cc-mode="opt-in"></script>
-<script async src="https://cdn.jsdelivr.net/gh/StephanRyatt/fs-cookie-consent-fix/index-fixed-corrected.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/StephanRyatt/fs-cc-gtm-integration/fs-cc-fixed.js" fs-cc-mode="opt-in"></script>
+<script async src="https://cdn.jsdelivr.net/gh/StephanRyatt/fs-cc-gtm-integration/index-fixed.js"></script>
 ```
-🚀 **Benefits of jsDelivr:**
-- No need to host files yourself.
-- Fast global CDN with caching for better performance.
-- Automatically updates when a new version is pushed.
+🚀 **Why use jsDelivr?**
+- No hosting required.
+- Fast, global CDN.
+- Automatically caches the latest version when updated.
 
 ---
 
 ### **🔄 Option 2: Self-Host the Scripts (For Full Control)**
-If you prefer to host the scripts yourself instead of using jsDelivr:
+Prefer to host the scripts yourself? Follow these steps:
 1. **Download the files**:
-   - [`fs-cc-fixed.js`](https://github.com/StephanRyatt/fs-cookie-consent-fix/fs-cc-fixed.js)
-   - [`index-fixed-corrected.js`](https://github.com/StephanRyatt/fs-cookie-consent-fix/index-fixed-corrected.js)
+   - [`fs-cc-fixed.js`](https://github.com/StephanRyatt/fs-cc-gtm-integration/fs-cc-fixed.js)
+   - [`index-fixed.js`](https://github.com/StephanRyatt/fs-cc-gtm-integration/index-fixed.js)
 2. **Upload them to your own server**.
-3. **Update your website’s script references** to point to your hosted versions.
+3. **Update your script references** in Webflow or your website.
 
-💡 **Want to customize further?** You can fork this repo, modify the scripts, and host your own version. Just update your script references accordingly.
+💡 **Advanced users:** If modifying further, fork this repo and update your jsDelivr links accordingly.
 
 ---
 
 ## 🛠 How It Works
-The script automatically updates Digital Sparks' consent assignments to:
+This integration ensures that consent preferences are correctly passed to Google Tag Manager (GTM):
 ```javascript
 ad_personalization: window.FsCC.store.consents.marketing ? "granted" : "denied",
 ```
-This prevents **ad personalization from being enabled under "Personalization"** and ensures **it only activates when "Marketing" is accepted.**
+This prevents ad personalization from being incorrectly tied to "Personalization" and ensures only "Marketing" consent enables ad-related cookies.
 
-Because `index.js` pushes consent changes to GTM, ensuring the correct mapping here means **Google Ads and other tracking tools receive the right permissions**, preventing unauthorized tracking and maintaining compliance with data privacy laws.
+Since `index-fixed.js` updates GTM’s dataLayer, **Google Ads, Analytics, and other tools receive the correct consent signals**, preventing unauthorized tracking and maintaining compliance.
 
 ## 📌 Key Fixes
-- 🛠 `ad_personalization` now respects "Marketing" consent instead of "Personalization."
+- 🛠 `ad_personalization` now aligns with "Marketing" consent.
 - ⚡ Ensures **Google Ads & Consent Mode compliance.**
 - 🔄 Fully compatible with **Webflow, GTM, and Google Analytics.**
 
 ## ❓ Need Help?
 Open an issue in this repo or reach out for support! 🚀
+
