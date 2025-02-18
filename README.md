@@ -4,7 +4,7 @@
 This repository provides a **fixed and enhanced integration between Finsweet's Cookie Consent script (`fs-cc.js`) and Google Tag Manager (GTM)**. It ensures that consent settings from Finsweet’s system are correctly mapped and pushed to GTM for compliance with **Google Consent Mode, GDPR, and CCPA.**
 
 ### Why This Fix?
-By default, Digital Sparks' Cookie Consent Boost script (`index.js`) incorrectly linked `ad_personalization` to "Personalization" instead of "Marketing." Since this script **pushes consent updates to GTM**, incorrect mapping leads to **inaccurate tracking behavior** in Google Ads and Analytics.
+By default, Digital Sparks' Cookie Consent Boost script (`index.js`), which integrates `fs-cc.js` with GTM, incorrectly linked `ad_personalization` to "Personalization" instead of "Marketing." Since this script **pushes consent updates to GTM**, incorrect mapping leads to **inaccurate tracking behavior** in Google Ads and Analytics.
 
 This fix ensures:
 - ✅ **Correct GTM Consent Mode behavior** – Ad personalization is only enabled with "Marketing" consent.
